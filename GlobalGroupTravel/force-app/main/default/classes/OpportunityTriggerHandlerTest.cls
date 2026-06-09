@@ -17,7 +17,7 @@ public class OpportunityTriggerHandlerTest {
         opp.StageName = 'Closed Won';
         update opp;
 
-        List<Trip__c> trips = [SELECT Id, Name, Opportunity__c FROM Trip__c WHERE Opportunity__c = :opp.Id];
+        List<Trip__c> trips = [SELECT Id FROM Trip__c WHERE Opportunity__c = :opp.Id];
         System.assertEquals(1, trips.size(), 'Un Trip doit être créé');
     }
 }
