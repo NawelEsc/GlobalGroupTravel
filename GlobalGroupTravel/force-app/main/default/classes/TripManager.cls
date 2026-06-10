@@ -1,12 +1,14 @@
 public class TripManager {
 
     public static List<Trip__c> getTrips() {
+        System.debug('Récupération de tous les voyages');
         return [SELECT Id, Name, Status__c, Destination__c, Start_Date__c, 
-        End_Date__c, Number_of_Participants__c, Total_Cost__c, 
-        Account__c, Opportunity__c FROM Trip__c WITH SECURITY_ENFORCED];
+                End_Date__c, Number_of_Participants__c, Total_Cost__c, 
+                Account__c, Opportunity__c FROM Trip__c WITH SECURITY_ENFORCED];
     }
 
     public static void createTrip(String destination, Date startDate, Date endDate, Integer numberOfParticipants, Id accountId, Id opportunityId) {
+        System.debug('Création d un voyage vers : ' + destination);
         Trip__c trip = new Trip__c(
             Destination__c = destination,
             Start_Date__c = startDate,
@@ -20,11 +22,13 @@ public class TripManager {
     }
 
     public static void updateTrip(Id tripId, String newStatus) {
+        System.debug('Mise à jour du voyage : ' + tripId);
         Trip__c trip = new Trip__c(Id = tripId, Status__c = newStatus);
         DataService.updateRecords(new List<SObject>{trip});
     }
 
     public static void deleteTrip(Id tripId) {
+        System.debug('Suppression du voyage : ' + tripId);
         Trip__c trip = new Trip__c(Id = tripId);
         DataService.deleteRecords(new List<SObject>{trip});
     }
