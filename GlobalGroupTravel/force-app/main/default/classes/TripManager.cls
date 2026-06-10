@@ -2,8 +2,8 @@ public class TripManager {
 
     public static List<Trip__c> getTrips() {
         return [SELECT Id, Name, Status__c, Destination__c, Start_Date__c, 
-                End_Date__c, Number_of_Participants__c, Total_Cost__c, 
-                Account__c, Opportunity__c FROM Trip__c];
+        End_Date__c, Number_of_Participants__c, Total_Cost__c, 
+        Account__c, Opportunity__c FROM Trip__c WITH SECURITY_ENFORCED];
     }
 
     public static void createTrip(String destination, Date startDate, Date endDate, Integer numberOfParticipants, Id accountId, Id opportunityId) {

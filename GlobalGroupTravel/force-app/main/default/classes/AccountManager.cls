@@ -1,7 +1,7 @@
 public class AccountManager {
 
     public static List<Account> getAccounts() {
-        return [SELECT Id, Name, Phone FROM Account];
+        return [SELECT Id, Name, Phone FROM Account WITH SECURITY_ENFORCED];
     }
 
     public static void createAccount(String name, String phone) {

@@ -1,7 +1,7 @@
 public class ContractManager {
 
     public static List<Contract> getContracts() {
-        return [SELECT Id, AccountId, StartDate, ContractTerm, Status FROM Contract];
+        return [SELECT Id, AccountId, StartDate, ContractTerm, Status FROM Contract WITH SECURITY_ENFORCED];
     }
 
     public static void createContract(Id accountId, Date startDate, Integer contractTerm) {
